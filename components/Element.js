@@ -1,12 +1,15 @@
 import { Text, View, StyleSheet } from "react-native";
+// import { useAppContext } from "../AppContext";
 
-export default function Element({el}) {
+export default function Element({route}) {
+    const { item } = route.params;
+
     return (
         <View style={styles.eleme}>
-            <Text style={styles.text}>Title: {el.title}</Text>
-            <Text style={styles.text}>Descrription: {el.description}</Text>
-            <Text style={styles.link}>Go to original news{el.url}</Text>
-            <Text style={styles.text}>Content: {el.content}</Text>
+            <Text style={styles.text}>Title: {item.title}</Text>
+            <Text style={styles.text}>Descrription: {item.description}</Text>
+            <Text style={styles.link}>Go to original news{item.url}</Text>
+            <Text style={styles.text}>Content: {item.content}</Text>
         </View>
     )
 }

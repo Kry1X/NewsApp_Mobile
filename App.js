@@ -1,29 +1,23 @@
 import { StyleSheet, View, FlatList} from 'react-native';
-// import { useState } from 'react';
 import React, { useState } from 'react';
 import Element from './components/Element';
 import ListNews from './components/ListNews';
+import { AppProvider, useAppContext } from './AppContext';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-// TODO: Finish all funxtions ofr MVP; Deploy & Test server
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  
  
   return (
-    <View>
-      <FlatList style={styles.list} data={news} renderItem={({item}) => (
-        <ListNews el={item} />
-      )} />
-      {/* <Element el={news[0]} /> */}
-    </View>
+    <AppProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="List">
+          <Stack.Screen name="List" component={ListNews} />
+          <Stack.Screen name="News" component={Element} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </AppProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  list: {  
-    marginTop: 50,
-    marginHorizontal: 10,
-    // backgroundColor: "",  
-    padding: 10 // yellow
-  }
-});

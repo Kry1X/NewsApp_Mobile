@@ -1,12 +1,26 @@
 import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
+import { FlatList } from "react-native";
+import { useAppContext } from "../AppContext";
 
-export default function ListNews({el}) {
-    return (
-        <TouchableOpacity style={styles.eleme}>
-            <Text style={styles.text}>{el.title}</Text>
+export default function ListNews({navigation}) {
+    const {news} = useAppContext();
+
+    const renderItem = ({item}) => (  
+        <TouchableOpacity style={styles.eleme} onPress={() => navigation.navigate('News', { item })}>
+            <Text style={styles.text}>{item.title}</Text>
             <View style={styles.line} />
-            <Text style={styles.source_text}>{el.source}</Text>
+            <Text style={styles.source_text}>{item.source}</Text>
         </TouchableOpacity>
+    );
+
+    return (
+        <View>
+            <FlatList 
+                data={news}
+                renderItem={renderItem}
+                keyExtractor={item => item.id.toString()}
+            />
+        </View> 
     )
 }
 
