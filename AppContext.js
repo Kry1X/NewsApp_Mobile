@@ -9,7 +9,7 @@ export function AppProvider({children}) {
 
   const fetchNews = async () => {
     try {
-      const url = "http://192.168.1.18:5000/api/news/getByQ ";
+      const url = "http://MyPC_IPv4:5000/api/news/getByQ ";
       const data = {
         query: 'Дуров',
         language: 'ru'
