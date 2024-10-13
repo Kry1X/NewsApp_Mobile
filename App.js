@@ -14,8 +14,8 @@ export default function App() {
     <AppProvider>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="List">
-          <Stack.Screen name="List" component={ListNews} />
-          <Stack.Screen name="News" component={Element} />
+          <Stack.Screen name="List" component={ListNews} options={{ headerShown: false }}/>
+          <Stack.Screen name="News" component={Element} options={{ headerShown: false }}/>
         </Stack.Navigator>
       </NavigationContainer>
     </AppProvider>

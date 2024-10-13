@@ -12,16 +12,25 @@ export default function ListNews({navigation}) {
             <Text style={styles.source_text}>{item.source}</Text>
         </TouchableOpacity>
     );
-
-    return (
-        <View>
-            <FlatList 
-                data={news}
-                renderItem={renderItem}
-                keyExtractor={item => item.id.toString()}
-            />
-        </View> 
-    )
+    if (news.length !== 0) {
+       return (
+            <View>
+                <FlatList 
+                    style={{marginTop: 30}}
+                    data={news}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id}
+                />
+            </View> 
+        ) 
+    } else {
+        return (
+            <View>
+                <Text style={styles.text}>Zero news!</Text>
+            </View>
+        )
+    }
+    
 }
 
 const styles = StyleSheet.create({
@@ -43,7 +52,8 @@ const styles = StyleSheet.create({
         borderColor: "black",
         textAlign: 'center', 
         padding: 20,
-        marginTop: 16
+        marginTop: 16,
+        marginHorizontal: 10
         // marginHorizontal: 10
     },
     line: {
